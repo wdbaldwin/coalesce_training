@@ -1,0 +1,160 @@
+steps:
+  RV_TERRITORY-747:
+    operation:
+      config:
+        insertStrategy: INSERT
+        postSQL: ""
+        preSQL: ""
+        testsEnabled: true
+        truncateBefore: true
+      database: ""
+      dependencies: []
+      deployEnabled: true
+      description: ""
+      isDataVault: false
+      isMultisource: false
+      locationID: ""
+      locationName: TARGET
+      materializationType: view
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 14498
+              stepCounter: "747"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: TERRITORY_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14475
+                    stepCounter: "745"
+                transform: ""
+          - columnReference:
+              columnCounter: 14499
+              stepCounter: "747"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: COUNTY_REGION_CODE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14476
+                    stepCounter: "745"
+                transform: ""
+          - columnReference:
+              columnCounter: 14500
+              stepCounter: "747"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: TERRITORY_NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14477
+                    stepCounter: "745"
+                transform: ""
+          - columnReference:
+              columnCounter: 14501
+              stepCounter: "747"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: TERRITORY_GROUP
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14478
+                    stepCounter: "745"
+                transform: ""
+          - columnReference:
+              columnCounter: 14502
+              stepCounter: "747"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: QUOTA2019
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14479
+                    stepCounter: "745"
+                transform: ""
+          - columnReference:
+              columnCounter: 14503
+              stepCounter: "747"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: QUOTA2020
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14480
+                    stepCounter: "745"
+                transform: ""
+          - columnReference:
+              columnCounter: 14504
+              stepCounter: "747"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: QUOTA2021
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14481
+                    stepCounter: "745"
+                transform: ""
+          - columnReference:
+              columnCounter: 14505
+              stepCounter: "747"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: QUOTA2022
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14482
+                    stepCounter: "745"
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - customSQL:
+              customSQL: |-
+                {{ stage('Override Create SQL') }} CREATE
+                OR REPLACE VIEW {{ ref('TARGET', 'RV_TERRITORY') }} AS (
+                  SELECT
+                    *
+                  FROM
+                    {{ ref('TARGET', 'STG_TERRITORY') }} unpivot(
+                      quota for year in (QUOTA2019, QUOTA2020, QUOTA2021, QUOTA2022)
+                    )
+                )
+            dependencies:
+              - locationName: TARGET
+                nodeName: STG_TERRITORY
+            join:
+              joinCondition: FROM {{ ref('TARGET', 'STG_TERRITORY') }} "STG_TERRITORY"
+            name: RV_TERRITORY
+            noLinkRefs: []
+      name: RV_TERRITORY
+      overrideSQL: true
+      schema: ""
+      sqlType: Stage
+      type: sql
+    stepCounter: "747"

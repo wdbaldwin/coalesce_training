@@ -1,0 +1,151 @@
+steps:
+  STG_TERRITORY-745:
+    operation:
+      config:
+        insertStrategy: INSERT
+        postSQL: ""
+        preSQL: ""
+        testsEnabled: true
+        truncateBefore: true
+      database: ""
+      dependencies: []
+      deployEnabled: true
+      description: ""
+      isDataVault: false
+      isMultisource: false
+      locationID: ""
+      locationName: TARGET
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 14475
+              stepCounter: "745"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: TERRITORY_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14467
+                    stepCounter: "744"
+                transform: ""
+          - columnReference:
+              columnCounter: 14476
+              stepCounter: "745"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: COUNTY_REGION_CODE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14468
+                    stepCounter: "744"
+                transform: UPPER("SALES_TERRITORY"."COUNTY_REGION_CODE")
+          - columnReference:
+              columnCounter: 14477
+              stepCounter: "745"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: TERRITORY_NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14469
+                    stepCounter: "744"
+                transform: ""
+          - columnReference:
+              columnCounter: 14478
+              stepCounter: "745"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: TERRITORY_GROUP
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14470
+                    stepCounter: "744"
+                transform: ""
+          - columnReference:
+              columnCounter: 14479
+              stepCounter: "745"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: QUOTA2019
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14471
+                    stepCounter: "744"
+                transform: ""
+          - columnReference:
+              columnCounter: 14480
+              stepCounter: "745"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: QUOTA2020
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14472
+                    stepCounter: "744"
+                transform: ""
+          - columnReference:
+              columnCounter: 14481
+              stepCounter: "745"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: QUOTA2021
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14473
+                    stepCounter: "744"
+                transform: ""
+          - columnReference:
+              columnCounter: 14482
+              stepCounter: "745"
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: QUOTA2022
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14474
+                    stepCounter: "744"
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: SRC
+                nodeName: SALES_TERRITORY
+            join:
+              joinCondition: FROM {{ ref('SRC', 'SALES_TERRITORY') }} "SALES_TERRITORY"
+            name: STG_TERRITORY
+            noLinkRefs: []
+      name: STG_TERRITORY
+      overrideSQL: false
+      schema: ""
+      sqlType: Stage
+      type: sql
+    stepCounter: "745"
